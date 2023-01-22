@@ -5,16 +5,16 @@
     display: inline-flex;
     align-items: center;
     padding: 3px 10px;
-    background-color: #dddddd;
+    background-color: #f2c555;
     font-size: 14px;
-    color: #515151;
+    color: #054f9d;
 
-    border-radius: 5px;
-    border: 1px solid #bbbbbb;
+    border-radius: 50px;
+    border: 1px solid #ed8080;
     
     &:hover,
     :focus {
-        color: #dddddd;
-        background-color: #212121;
+        color: #1f1f1e;
+        background-color: #ed8484;
     }
 }
