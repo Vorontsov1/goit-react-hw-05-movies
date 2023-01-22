@@ -1,40 +1,39 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import * as API from '../../services/fetchMovieApi';
 
-
 const Reviews = () => {
-    const [reviewMovie, setReviewMovie] = useState(null);
-    const { movieId} = useParams();
+  const [reviewMovie, setReviewMovie] = useState(null);
+  const { movieId } = useParams();
 
-useEffect(() => {
+  useEffect(() => {
     API.getMovieReviews(movieId)
-    .then(data => {
+      .then(data => {
         setReviewMovie(data);
-    })
-    .catch(console.log);
-}, [movieId]);
+      })
+      .catch(console.log);
+  }, [movieId]);
 
-if(!reviewMovie) {
+  if (!reviewMovie) {
     return;
-}
+  }
 
-return (
+  return (
     <>
-    {reviewMovie.lenght > 0 ? (
+      {reviewMovie.length > 0 ? (
         <ul>
-            {reviewMovie.map(({id, author, content }) => (
-                <li key={id}>
-                    Author: <b>{author}</b>
-                    <p>{content}</p>
-                </li>
-            ))}
+          {reviewMovie.map(({ id, author, content }) => (
+            <li key={id}>
+              Author: <b>{author}</b>
+              <p>{content}</p>
+            </li>
+          ))}
         </ul>
-    ) : (
+      ) : (
         <div>Reviews not found</div>
-       )}
+      )}
     </>
-   );
+  );
 };
 
 export default Reviews;

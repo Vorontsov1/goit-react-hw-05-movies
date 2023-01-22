@@ -1,42 +1,43 @@
-import { useState, useEffect, Suspense} from 'react';
+
+import { useState, useEffect, Suspense } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import * as API from '../services/fetchMovieApi';
-import Additional from 'components/Additional/Additional';
-import InfoMovie from 'components/InfoMovie/InfoMovie';
-import GoBackBtn from 'components/GoBackBtn/GoBackBtn';
-import Loading from 'components/Loading/Loading';
+import Additional from '../components/Additional/Additional';
+import InfoMovie from '../components/InfoMovie/InfoMovie';
+import GoBackButton from '../components/GoBackBtn/GoBackBtn';
+import Loading from '../components/Loading/Loading';
 
 const MovieDetails = () => {
-   const [movie, setMovie] = useState(null);
-   const {movieId} = useParams();
+  const [movie, setMovie] = useState(null);
+  const { movieId } = useParams();
 
-   const location = useLocation();
-   const backLinkHref = location.state?.form ?? '/';
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
 
-   useEffect(() => {
+  useEffect(() => {
     API.getMovieById(movieId)
-    .then(data => {
+      .then(data => {
         setMovie(data);
-    })
-    .catch(console.log);
-   }, [movieId]);
+      })
+      .catch(console.log);
+  }, [movieId]);
 
-   if (!movie) {
-    return
-   }
+  if (!movie) {
+    return;
+  }
 
- return (
+  return (
     <>
-    <GoBackBtn backLinkHref={backLinkHref} />
-    <InfoMovie movie={movie} />
-    <Additional location={backLinkHref} />
+      <GoBackButton backLinkHref={backLinkHref} />
+      <InfoMovie movie={movie} />
+      <Additional location={backLinkHref} />
 
-    <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading />}>
         <Outlet />
-    </Suspense>
+      </Suspense>
     </>
- );
+  );
 };
 
 export default MovieDetails;

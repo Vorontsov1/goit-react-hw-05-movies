@@ -1,5 +1,5 @@
 .list {
-    padding: 0;
+    padding: 5;
   }
   
   .title {
@@ -10,15 +10,15 @@
     display: block;
   
     &:not(:last-child) {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
   }
   
   .link {
-    color: #888888;
+    color: #5693ee;
   
     &:hover,
     :focus {
-      color: #000000;
+      color: #f54444;
     }
   }

@@ -3,28 +3,28 @@ import { useSearchParams } from 'react-router-dom';
 import * as API from '../../services/fetchMovieApi';
 import MoviesList from 'components/MovieList/MovieList';
 import Loading from 'components/Loading/Loading';
-import s from './MovieSearch.module.scss';
+import styles from './MovieSearch.module.scss';
 
 const MovieSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
 
-  const [movies, setMovies] = useState(null);
-  const [totalRezultMovie, setTotalRezultMovie] = useState(null);
+  const [movies, setMovie] = useState(null);
+  const [totalRezultMovie, setTotalRezMovie] = useState(null);
   const [showLoading, setShowLoading] = useState(false);
   const [inputSearch, setInputSearch] = useState(query);
 
   useEffect(() => {
     if (query === '') return;
 
-    setMovies(null);
-    setTotalRezultMovie(null);
+    setMovie(null);
+    setTotalRezMovie(null);
     setShowLoading(true);
 
-    API.getMovieQuery(query)
+    API.getMoviesQuery(query)
       .then(data => {
-        setMovies(data.results);
-        setTotalRezultMovie(data.total.results);
+        setMovie(data.results);
+        setTotalRezMovie(data.total_results);
         setShowLoading(false);
       })
       .catch(console.log);
@@ -34,28 +34,28 @@ const MovieSearch = () => {
     setInputSearch(e.currentTarget.value);
   };
 
-
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
     const queryNormalized = form.query.value.toLowerCase().trim();
 
     setSearchParams({ query: queryNormalized });
+    // form.reset();
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit} className={s.form}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="text"
           name="query"
-          className="s.input"
+          className={styles.input}
           value={inputSearch}
           onChange={handleInputChange}
           placeholder="Enter movie name"
         />
 
-        <button type="submit" className={s.submit}>
+        <button type="submit" className={styles.submit}>
           Search
         </button>
       </form>
@@ -67,6 +67,5 @@ const MovieSearch = () => {
     </>
   );
 };
-
 
 export default MovieSearch;

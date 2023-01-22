@@ -1,10 +1,10 @@
-import s from './NotFound.module.scss';
+import styles from './NotFound.module.scss';
 
 const PageNotFound = () => {
   return (
     <>
-      <div className={s.container}>
-        <div className={s.messege}>Page not found!</div>
+      <div className={styles.container}>
+        <div className={styles.messege}>Page not found!</div>
       </div>
     </>
   );

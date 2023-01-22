@@ -1,38 +1,39 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import * as API from '../../services/fetchMovieApi';
-import s from './Cast.module.scss';
+import styles from './Cast.module.scss';
 
 const Cast = () => {
-    const [cast, setCast] = useState(null);
-    const {movieId} = useParams();
+  const [castMovie, setCastMovie] = useState(null);
+  const { movieId } = useParams();
 
-    useEffect(() => {
-        API.getMovieCast(movieId)
-        .then(data => setCast(data))
-        .catch(console.log);
-    }, [movieId]);
-    if (!cast) {
-        return;
-    }
+  useEffect(() => {
+    API.getMovieCast(movieId)
+      .then(data => setCastMovie(data))
+      .catch(console.log);
+  }, [movieId]);
 
-    return (
-        <>
-        {cast.length > 0 ? (
+  if (!castMovie) {
+    return;
+  }
+
+  return (
+    <>
+      {castMovie.length > 0 ? (
         <ul>
-          {cast
+          {castMovie
             .slice(0, 19)
             .map(({ id, name, character, profile_path }) => (
-              <li key={id} className={s.item}>
+              <li key={id} className={styles.item}>
                 {profile_path ? (
                   <img
                     src={`https://image.tmdb.org/t/p/w500${profile_path}`}
                     alt={name}
-                    className={s.img}
+                    className={styles.img}
                     width="100"
                   />
                 ) : (
-                  <div className={s.imgNotFound}>Image not found</div>
+                  <div className={styles.imgNotFound}>Image not found</div>
                 )}
                 <div>
                   <p>
@@ -48,8 +49,8 @@ const Cast = () => {
       ) : (
         <div>No casts</div>
       )}
-        </>
-    )
-}
+    </>
+  );
+};
 
 export default Cast;
