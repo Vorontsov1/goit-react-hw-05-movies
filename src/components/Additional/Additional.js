@@ -10,7 +10,8 @@ const AdditionalItems = [
 const Additional = ({ location }) => {
   return (
     <div>
-      <h4 className={styles.title}>Addititonal information</h4>
+      <div className={styles.container}>
+      <h4 className={styles.title}>Addititonal information:</h4>
       <ul>
         {AdditionalItems.map(({ href, text }) => (
           <li className={styles.item} key={href}>
@@ -21,6 +22,7 @@ const Additional = ({ location }) => {
         ))}
       </ul>
       <hr />
+    </div>
     </div>
   );
 };
