@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import * as API from '../services/fetchMovieApi';
 import Additional from '../components/Additional/Additional';
 import InfoMovie from '../components/InfoMovie/InfoMovie';
-import GoBackButton from '../components/GoBackBtn/GoBackBtn';
+import GoBackBtn from '../components/GoBackBtn/GoBackBtn';
 import Loading from '../components/Loading/Loading';
 
 const MovieDetails = () => {
@@ -29,7 +29,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <GoBackButton backLinkHref={backLinkHref} />
+      <GoBackBtn backLinkHref={backLinkHref} />
       <InfoMovie movie={movie} />
       <Additional location={backLinkHref} />
 

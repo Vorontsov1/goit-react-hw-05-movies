@@ -1,0 +1,19 @@
+.form {
+  margin-bottom: 25px;
+}
+
+.input {
+  width: 250px;
+  height: 30px;
+}
+
+.submit {
+  height: 30px;
+  padding: 0 15px;
+  border: none;
+  background-color: #f35757;
+  cursor: pointer;
+}
+.submit:hover {
+  background-color: #e6dada;
+}/*# sourceMappingURL=MovieSearch.module.css.map */
