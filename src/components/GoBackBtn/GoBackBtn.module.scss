@@ -1,24 +1,19 @@
 .container {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
    
 }
 .link{
     position: absolute;
-    top: auto;
     left: 20%;
     transform: translate(-50%, -50%);
     display: inline-block;
     padding: 0.5em 1em;
-    font-size: 1em;
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    text-transform: uppercase;
-    border-radius: 4px;
     transition: all 0.2s ease-in-out;
     background-color: #f2c555;
     color: #054f9d;
-    border: none;
     border-radius: 50px;
     border: 1px solid #ed8080;
     

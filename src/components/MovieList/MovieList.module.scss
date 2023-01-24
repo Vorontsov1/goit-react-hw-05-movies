@@ -1,11 +1,17 @@
 .list {
+
+  font-size: 3em;
+  text-transform: uppercase; 
+  letter-spacing: 0.1em;
+  font-size: 3em;
+  font-weight: bold;
+  font-family: "Futura", sans-serif;
+  text-align: center;
   width: 1200px;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
-  padding-bottom: 10px;
-   
   }
   
   .title {
@@ -26,7 +32,7 @@
   
   .link {
     display: inline-block;
-    color: #331aee;
+    color: rgb(161, 156, 156);
   
     &:hover,
     :focus {

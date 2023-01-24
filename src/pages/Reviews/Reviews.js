@@ -18,8 +18,14 @@ const Reviews = () => {
     return;
   }
 
+  const containerStyle =  {
+    width: '1200px',
+    margin: '0 auto',
+    paddingTop: '50px',
+  }
+
   return (
-    <>
+    <div style={containerStyle}>
       {reviewMovie.length > 0 ? (
         <ul>
           {reviewMovie.map(({ id, author, content }) => (
@@ -31,8 +37,9 @@ const Reviews = () => {
         </ul>
       ) : (
         <div>Reviews not found</div>
-      )}
-    </>
+      )
+    } 
+    </div>
   );
 };
 
